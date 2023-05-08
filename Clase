@@ -1,0 +1,90 @@
+package org.example;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Clase {
+
+    private List<Estudiante> estudiantes;
+
+    public Clase(){
+        this.estudiantes = new ArrayList<>();
+    }
+    public boolean agregarEstudiante(String nombre, String apellido, String rut, String nroMatricula){
+        if(buscarEstudiante(rut,nombre) == null) {
+            Estudiante estudiante = new Estudiante(nombre, apellido, rut, nroMatricula);
+            this.estudiantes.add(estudiante);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean agregarEstudiante(Estudiante estudiante){
+        if(buscarEstudiante(estudiante.getRut(),estudiante.getNombre()) == null){
+            this.estudiantes.add(estudiante);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean eliminarEstudiante(String rut, String nombre){
+        Estudiante estudiante= this.buscarEstudiante(rut,nombre);
+        if(estudiante != null){
+            this.estudiantes.remove(estudiante);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Estudiante buscarEstudiante(String rut, String nombre){
+        for(Estudiante estudiante : this.estudiantes){
+            if(estudiante.getNombre().equals(nombre) && estudiante.getRut().equals(rut)){
+                return estudiante;
+            }
+        }
+        return null;
+    }
+    public List buscarEstudiantes(String nombre, String alexis, String raul){
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        for(Estudiante estudiante : this.estudiantes){
+            if(estudiante.getNombre().equals(nombre)){
+                estudiantes.add(estudiante);
+            }
+        }
+        return estudiantes;
+    }
+
+
+    public boolean modificarEstudiante(String rut, String nombre){
+        boolean condicion = false;
+        for(Estudiante estudiante: this.estudiantes){
+            if(estudiante.getRut().equals(rut)){
+                estudiante.setNombre(nombre);
+                condicion = true;
+                break;
+            }
+        }
+        return condicion;
+    }
+    public Estudiante modificarEstudiante(Estudiante estudiante, String nombre){
+        estudiante.setNombre(nombre);
+        return estudiante;
+    }
+
+    public void mostrarEstudiantes(){
+        for(Estudiante estudiante : this.estudiantes){
+            System.out.println(estudiante.toString());
+        }
+    }
+
+    public void mostrarEstudiantes(List<Estudiante> estudiantes){
+        for(Estudiante estudiante : estudiantes){
+            System.out.println(estudiante.toString());
+        }
+    }
+
+}
