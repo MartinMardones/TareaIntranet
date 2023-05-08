@@ -1,0 +1,32 @@
+package org.example;
+public class Intranet {
+    public static void main(String[] args) {
+        Intranet intranet= new Intranet();
+        intranet.ejecutar();
+    }
+    public void ejecutar(){
+        Clase clase = new Clase();
+
+        clase.agregarEstudiante("Alexis","Sanchez","10.100.100-1","10100100121");
+
+        clase.agregarEstudiante("Mario","Mario","10.031.111-1","10031111121");
+
+        Estudiante estudiante1 = new Estudiante("Arturo","Prat","10.000.000-0","10000000021");
+        clase.agregarEstudiante(estudiante1);
+
+        Estudiante estudiante2 = new Estudiante("Lebron", "James", "20.200.200-0", "20200200021");
+        clase.agregarEstudiante(estudiante2);
+
+        clase.mostrarEstudiantes();
+
+        clase.eliminarEstudiante("10.031.111-1","Mario");
+
+        clase.eliminarEstudiante("10.000.000-0", "Arturo");
+
+        clase.mostrarEstudiantes();
+
+
+
+
+    }
+}
